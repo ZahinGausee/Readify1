@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Books</title>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C08081; /* Old Rose Color */
+        }
+
+        .category-header {
+            text-align: center;
+            background-color: #F5DEB3; /* Wheat Color */
+            padding: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #FFE4E1; /* Light Rose Color */
+            border-radius: 5px;
+        }
+
+        .book-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .book-item h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .book-item p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .read-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .read-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="category-header">
+        <h1>Strategy Books</h1>
+        <p>Learn the principles of effective strategy and decision-making.</p>
+    </div>
+    <div class="book-list">
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Good+Strategy+Bad+Strategy" alt="Good Strategy Bad Strategy">
+            <h3>Good Strategy Bad Strategy</h3>
+            <p>Richard Rumelt</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('good-strategy-bad-strategy.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=A+Book+of+Five+Rings" alt="A Book of Five Rings">
+            <h3>A Book of Five Rings</h3>
+            <p>Miyamoto Musashi</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('a-book-of-five-rings.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Deep+Work" alt="Deep Work: Rules for Focused Success in a Distracted World">
+            <h3>Deep Work: Rules for Focused Success in a Distracted World</h3>
+            <p>Cal Newport</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('deep-work-rules-for-focused-success-in-a-distracted-world.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Dixit+and+Nalebuff" alt="Dixit and Nalebuff">
+            <h3>Dixit and Nalebuff</h3>
+            <p>Avinash Dixit and Barry Nalebuff</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('dixit-and-nalebuff.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Execution" alt="Execution">
+            <h3>Execution</h3>
+            <p>Larry Bossidy and Ram Charan</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('execution.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Essentialism" alt="Essentialism: The Disciplined Pursuit">
+            <h3>Essentialism: The Disciplined Pursuit</h3>
+            <p>Greg McKeown</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('greg-mckeown-essentialism-the-disciplined-pursuit.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Innovative" alt="Innovative">
+            <h3>Innovative</h3>
+            <p>Author Placeholder</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('innovative.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Prince" alt="The Prince">
+            <h3>The Prince</h3>
+            <p>Niccolò Machiavelli</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('machiavelli-the-prince.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Competitive+Strategy" alt="Competitive Strategy">
+            <h3>Competitive Strategy</h3>
+            <p>Michael E. Porter</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('michael-e-porter-competitive-strategy.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Art+of+War" alt="The Art of War">
+            <h3>The Art of War</h3>
+            <p>Sun Tzu</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('the-art-of-war.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Blue+Ocean" alt="The Blue Ocean">
+            <h3>The Blue Ocean</h3>
+            <p>W. Chan Kim and Renée Mauborgne</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('the-blue-ocean.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+First+90+Days" alt="The First 90 Days">
+            <h3>The First 90 Days</h3>
+            <p>Michael Watkins</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('the-first-90-days-michael-watkins-3.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Lean+Startup" alt="The Lean Startup">
+            <h3>The Lean Startup</h3>
+            <p>Eric Ries</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('the-leanstartup.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Strategy+Paradox" alt="The Strategy Paradox">
+            <h3>The Strategy Paradox</h3>
+            <p>Michael E. Raynor</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('the-strategy-paradox-aug07.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Think+and+Grow+Rich" alt="Think and Grow Rich">
+            <h3>Think and Grow Rich</h3>
+            <p>Napoleon Hill</p>
+            <button class="read-button" id="readMoreBtn" onclick="readBook('think-and-grow-rich-2011-06.pdf')">Read Online</button>
+        </div>
+    </div>
+
+    <script>
+
+const client = new Appwrite.Client();
+    client
+        .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite endpoint
+        .setProject('67309edd0038034a0603'); // Your project ID
+
+const account = new Appwrite.Account(client);
+
+async function readBook(BookName) {
+            let user;
+            try {
+            user = await account.get();
+            // Logged in
+            if (user) {
+                window.open(`../Books PDF/Strategy/${BookName}`, "_blank"); // Opens the PDF in a new tab
+            }
+            else {
+                alert("You have not access to read this book please login first");
+                window.location.href = "../Log/index.html";
+            }
+            } catch (err) {
+            // Not logged in
+                console.log(err);
+            }
+            if (!user) {
+                alert("You don't have access to read this book please login first");
+            }
+        }
+    
+    </script>
+</body>
+
+</html>

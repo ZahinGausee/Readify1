@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Books</title>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C08081; /* Old Rose Color */
+        }
+
+        .category-header {
+            text-align: center;
+            background-color: #F5DEB3; /* Wheat Color */
+            padding: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #FFE4E1; /* Light Rose Color */
+            border-radius: 5px;
+        }
+
+        .book-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .book-item h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .book-item p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .read-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .read-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="category-header">
+        <h1>Education Books</h1>
+        <p>Enhance your knowledge and skills with these educational resources.</p>
+    </div>
+    <div class="book-list">
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+7+Habits+of+Highly+Effective+People" alt="The 7 Habits of Highly Effective People">
+            <h3>The 7 Habits of Highly Effective People</h3>
+            <p>Stephen R. Covey</p>
+            <button class="read-button" onclick="readBook('02.-the-7-habits-of-highly-effective-people.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Grit" alt="Grit">
+            <h3>Grit</h3>
+            <p>Angela Duckworth</p>
+            <button class="read-button" onclick="readBook('angela-duckworth-grit.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Atomic+Habits" alt="Atomic Habits">
+            <h3>Atomic Habits</h3>
+            <p>James Clear</p>
+            <button class="read-button" onclick="readBook('atomic-habits-pdfdrive-.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Essentialism" alt="Essentialism">
+            <h3>Essentialism</h3>
+            <p>Greg McKeown</p>
+            <button class="read-button" onclick="readBook('greg-mckeown-essentialism-the-disciplined-pursuit.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=How+to+Win+Friends+and+Influence+People" alt="How to Win Friends and Influence People">
+            <h3>How to Win Friends and Influence People</h3>
+            <p>Dale Carnegie</p>
+            <button class="read-button" onclick="readBook('how-to-win-friends-and-influence-people.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Mindset" alt="Mindset">
+            <h3>Mindset: The New Psychology of Success</h3>
+            <p>Carol S. Dweck</p>
+            <button class="read-button" onclick="readBook('mindset-the-new-psychology-of-success-dweck.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Outliers" alt="Outliers">
+            <h3>Outliers</h3>
+            <p>Malcolm Gladwell</p>
+            <button class="read-button" onclick="readBook('outliers-the-story-of-success.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Quiet" alt="Quiet">
+            <h3>Quiet: The Power of Introverts</h3>
+            <p>Susan Cain</p>
+            <button class="read-button" onclick="readBook('quiet-the-power-of-introverts-in-a-world-that-cant-stop-talking-susan-cain.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+4-Hour+Workweek" alt="The 4-Hour Workweek">
+            <h3>The 4-Hour Workweek</h3>
+            <p>Timothy Ferriss</p>
+            <button class="read-button" onclick="readBook('the-4-hour-workweek-expanded-and-updated-by-timothy-ferriss.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+5+AM+Club" alt="The 5 AM Club">
+            <h3>The 5 AM Club</h3>
+            <p>Robin Sharma</p>
+            <button class="read-button" onclick="readBook('the-5-am-club.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Elements+of+Style" alt="The Elements of Style">
+            <h3>The Elements of Style</h3>
+            <p>William Strunk Jr. & E.B. White</p>
+            <button class="read-button" onclick="readBook('the-elements-of-style.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Power+of+Now" alt="The Power of Now">
+            <h3>The Power of Now</h3>
+            <p>Eckhart Tolle</p>
+            <button class="read-button" onclick="readBook('the-power-of-now-eckhart-tolle.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Subtle+Art+of+Not+Giving+a+F*ck" alt="The Subtle Art of Not Giving a F*ck">
+            <h3>The Subtle Art of Not Giving a F*ck</h3>
+            <p>Mark Manson</p>
+            <button class="read-button" onclick="readBook('the-subtle-art-of-not-giving-a-fck-a-counterintuitive-approach-to-living-a-good-life-by-mark-manson-z-lib.org-.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Talent+Code" alt="The Talent Code">
+            <h3>The Talent Code</h3>
+            <p>Daniel Coyle</p>
+            <button class="read-button" onclick="readBook('the-talent-code-by-daniel-coyle.pdf')">Read Online</button>
+        </div>        
+    </div>
+
+    <script>
+        const client = new Appwrite.Client();
+        client
+            .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite endpoint
+            .setProject('67309edd0038034a0603'); // Your project ID
+
+        const account = new Appwrite.Account(client);
+        async function readBook(BookName) {
+            let user;
+            try {
+            user = await account.get();
+            // Logged in
+            if (user) {
+                window.open(`../Books PDF/Education/${BookName}`, "_blank"); // Opens the PDF in a new tab
+            }
+            else {
+                alert("You have not access to read this book please login first");
+                window.location.href = "../Log/index.html";
+            }
+            } catch (err) {
+            // Not logged in
+                console.log(err);
+            }
+            if (!user) {
+                alert("You don't have access to read this book please login first");
+            }
+        }
+    
+    </script>
+
+</body>
+</html>

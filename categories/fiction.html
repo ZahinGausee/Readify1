@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiction Books</title>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C08081; /* Old Rose Color */
+        }
+
+        .category-header {
+            text-align: center;
+            background-color: #F5DEB3; /* Wheat Color */
+            padding: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #FFE4E1; /* Light Rose Color */
+            border-radius: 5px;
+        }
+
+        .book-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .book-item h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .book-item p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .read-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .read-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="category-header">
+        <h1>Fiction Books</h1>
+        <p>Explore captivating stories and imaginative worlds.</p>
+    </div>
+    <div class="book-list">
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=To+Kill+a+Mockingbird" alt="To Kill a Mockingbird">
+            <h3>To Kill a Mockingbird</h3>
+            <p>Harper Lee</p>
+            <button class="read-button" onclick="readBook('the-kill-mockingbird.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=1984" alt="1984">
+            <h3>1984</h3>
+            <p>George Orwell</p>
+            <button class="read-button" onclick="readBook('1984.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Pride+and+Prejudice" alt="Pride and Prejudice">
+            <h3>Pride and Prejudice</h3>
+            <p>Jane Austen</p>
+            <button class="read-button" onclick="readBook('pride-and-prejudice.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Great+Gatsby" alt="The Great Gatsby">
+            <h3>The Great Gatsby</h3>
+            <p>F. Scott Fitzgerald</p>
+            <button class="read-button" onclick="readBook('the-great-gatsby.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Catch+in+the+Rye" alt="The Catcher in the Rye">
+            <h3>The Catcher in the Rye</h3>
+            <p>J.D. Salinger</p>
+            <button class="read-button" onclick="readBook('the-catcher-in-the-rye.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Hobbit" alt="The Hobbit">
+            <h3>The Hobbit</h3>
+            <p>J.R.R. Tolkien</p>
+            <button class="read-button" onclick="readBook('the-hobbit.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Brave+New+World" alt="Brave New World">
+            <h3>Brave New World</h3>
+            <p>Aldous Huxley</p>
+            <button class="read-button" onclick="readBook('bravenewworld.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Picture+of+Dorian+Gray" alt="The Picture of Dorian Gray">
+            <h3>The Picture of Dorian Gray</h3>
+            <p>Oscar Wilde</p>
+            <button class="read-button" onclick="readBook('pictureofdoriang00wildiala.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Fahrenheit+451" alt="Fahrenheit 451">
+            <h3>Fahrenheit 451</h3>
+            <p>Ray Bradbury</p>
+            <button class="read-button" onclick="readBook('fahrenheit-451.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Fault+in+Our+Stars" alt="The Fault in Our Stars">
+            <h3>The Fault in Our Stars</h3>
+            <p>John Green</p>
+            <button class="read-button" onclick="readBook('the-fault-in-our-stars.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Life+of+Pi" alt="Life of Pi">
+            <h3>Life of Pi</h3>
+            <p>Yann Martel</p>
+            <button class="read-button" onclick="readBook('life-of-pi-by-yann-martel.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Road" alt="The Road">
+            <h3>The Road</h3>
+            <p>Cormac McCarthy</p>
+            <button class="read-button" onclick="readBook('the-road-text.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Alchemist" alt="The Alchemist">
+            <h3>The Alchemist</h3>
+            <p>Paulo Coelho</p>
+            <button class="read-button" onclick="readBook('the-alchemist.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=One+Hundred+Years+of+Solitude" alt="One Hundred Years of Solitude">
+            <h3>One Hundred Years of Solitude</h3>
+            <p>Gabriel García Márquez</p>
+            <button class="read-button" onclick="readBook('one-hundred-years-of-solitude.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Giver" alt="The Giver">
+            <h3>The Giver</h3>
+            <p>Lois Lowry</p>
+            <button class="read-button" onclick="readBook('the-giver.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Catcher+in+the+Rye" alt="The Catcher in the Rye">
+            <h3>The Catcher in the Rye</h3>
+            <p>J.D. Salinger</p>
+            <button class="read-button" onclick="readBook('the-catcher-in-the-rye.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Bell+Jar" alt="The Bell Jar">
+            <h3>The Bell Jar</h3>
+            <p>Sylvia Plath</p>
+            <button class="read-button" onclick="readBook('the-bell-jar.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Secret+Garden" alt="The Secret Garden">
+            <h3>The Secret Garden</h3>
+            <p>Frances Hodgson Burnett</p>
+            <button class="read-button" onclick="readBook('the-secret-garden.pdf')">Read Online</button>
+        </div>
+    </div>
+
+    <script>
+
+        const client = new Appwrite.Client();
+            client
+                .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite endpoint
+                .setProject('67309edd0038034a0603'); // Your project ID
+        
+        const account = new Appwrite.Account(client);
+        
+        async function readBook(BookName) {
+            let user;
+            try {
+            user = await account.get();
+            // Logged in
+            if (user) {
+                window.open(`../Books PDF/Fiction/${BookName}`, "_blank"); // Opens the PDF in a new tab
+            }
+            else {
+                alert("You have not access to read this book please login first");
+                window.location.href = "../Log/index.html";
+            }
+            } catch (err) {
+            // Not logged in
+                console.log(err);
+            }
+            if (!user) {
+                alert("You don't have access to read this book please login first");
+            }
+        }
+    
+            </script>
+</body>
+</html>

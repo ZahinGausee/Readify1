@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business & Economics Books</title>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C08081; /* Old Rose Color */
+        }
+
+        .category-header {
+            text-align: center;
+            background-color: #F5DEB3; /* Wheat Color */
+            padding: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #FFE4E1; /* Light Rose Color */
+            border-radius: 5px;
+        }
+
+        .book-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .book-item h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .book-item p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .read-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .read-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="category-header">
+        <h1>Business & Economics Books</h1>
+        <p>Explore the principles of business and economic theories.</p>
+    </div>
+    <div class="book-list">
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Lean+Startup" alt="The Lean Startup">
+            <h3>The Lean Startup</h3>
+            <p>Eric Ries</p>
+            <button class="read-button" onclick="readBook('the-lean-startup.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Good+to+Great" alt="Good to Great">
+            <h3>Good to Great</h3>
+            <p>Jim Collins</p>
+            <button class="read-button" onclick="readBook('good-to-great.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Rich+Dad+Poor+Dad" alt="Rich Dad Poor Dad">
+            <h3>Rich Dad Poor Dad</h3>
+            <p>Robert T. Kiyosaki</p>
+            <button class="read-button" onclick="readBook('rich-dad-poor-dad.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Intelligent+Investor" alt="The Intelligent Investor">
+            <h3>The Intelligent Investor</h3>
+            <p>Benjamin Graham</p>
+            <button class="read-button" onclick="readBook('the-intelligent-investor.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Zero+to+One" alt="Zero to One">
+            <h3>Zero to One</h3>
+            <p>Peter Thiel</p>
+            <button class="read-button" onclick="readBook('zero-to-one.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Basic+Economics" alt="Basic-Economics"/>
+            <h3>Basic Economics</h3>
+            <p>Thomas Sowell</p>
+            <button class="read-button" onclick="readBook('Basic-Economics.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Crushing+It!" alt="Crushing It!">
+            <h3>Crushing It!</h3>
+            <p>Gary Vaynerchuk</p>
+            <button class="read-button" onclick="readBook('Crushing.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Millionaire+Next+Door" alt="The Millionaire Next Door">
+            <h3>The Millionaire Next Door</h3>
+            <p>Thomas J. Stanley and William D. Danko</p>
+            <button class="read-button" onclick="readBook('The Millionaire Next Door.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=This+Is+Marketing" alt="This Is Marketing">
+            <h3>This Is Marketing</h3>
+            <p>Sath Godin</p>
+            <button class="read-button" onclick="readBook('This-Is-Marketing.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Your+Money+or+Your+Life" alt="Your Money or Your Life">
+            <h3>Your Money or Your Life</h3>
+            <p>Vicki Robin and Joe Dominguez</p>
+            <button class="read-button" onclick="readBook('Your Money or Your Life.pdf')">Read Online</button>
+        </div>
+    </div>
+
+    <script>
+        const client = new Appwrite.Client();
+        client
+            .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite endpoint
+            .setProject('67309edd0038034a0603'); // Your project ID
+
+    const account = new Appwrite.Account(client);
+
+    async function readBook(BookName) {
+            let user;
+            try {
+            user = await account.get();
+            // Logged in
+            if (user) {
+                window.open(`../Books PDF/Economics/${BookName}`, "_blank"); // Opens the PDF in a new tab
+            }
+            else {
+                alert("You have not access to read this book please login first");
+                window.location.href = "../Log/index.html";
+            }
+            } catch (err) {
+            // Not logged in
+                console.log(err);
+            }
+            if (!user) {
+                alert("You don't have access to read this book please login first");
+            }
+        }
+    </script>
+
+</body>
+</html>

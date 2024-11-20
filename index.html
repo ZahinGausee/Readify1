@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <!-- 
+    - primary meta tags
+  -->
+  <title>Readify</title>
+  <meta name="title" content="Readify - Read More And Make Success">
+  <meta name="description"
+    content="Read More And Make Success The Result Of Perfection. - Read anywhere, anytime - Readify brings the joy of reading to your screen with a vast collection of e-books.">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- 
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet">
+    <style>
+
+      .book-list {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 20px;
+          padding: 20px;
+          background-color: #FFE4E1; /* Light Rose Color */
+          border-radius: 5px;
+      }
+
+      .book-item {
+          border: 1px solid #ccc;
+          padding: 15px;
+          border-radius: 5px;
+          background-color: #fff;
+          text-align: center;
+          transition: transform 0.2s;
+      }
+
+      .book-item:hover {
+          transform: scale(1.05);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .book-item img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 5px;
+          margin: auto;
+      }
+
+      .book-item h3 {
+          margin: 10px 0 5px;
+          font-size: 1.2em;
+      }
+
+      .book-item p {
+          color: #555;
+          margin: 5px 0;
+      }
+
+      .read-button {
+          margin: auto;
+          padding: 10px;
+          background-color: #4CAF50;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+
+      .read-button:hover {
+          background-color: #45a049;
+      }
+  </style>
+  <!-- Appwrite cdn -->
+  <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+  
+</head>
+
+<body>
+
+  <!-- 
+    - #HEADER
+  -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <a href="#" class="logo">Readify</a>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+
+          <li class="navbar-item">
+            <a href="#home" class="navbar-link" data-nav-link>Home</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#categories" class="navbar-link" data-nav-link>Categories</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#newbooks" class="navbar-link" data-nav-link>New Books</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#author" class="navbar-link" data-nav-link>Author</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#about" class="navbar-link" data-nav-link>About</a>
+          </li>
+
+          <li class="navbar-item">
+            <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+          </li>
+
+          <li class="navbar-item">
+            <button id="loginBtn" class="btnLogin-popup" >Login</button>
+          </li>
+          
+        </ul>
+      </nav>
+
+      <button class="nav-toggle-btn" aria-label="toggle menu" data-nav-toggler>
+        <ion-icon name="menu-outline" aria-hidden="true" class="open"></ion-icon>
+
+        <ion-icon name="close-outline" aria-hidden="true" class="close"></ion-icon>
+      </button>
+      
+    </div>
+  </header>
+
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero" id="home" aria-label="home">
+
+        <div class="container">
+
+          <div class="hero-content">
+
+            <p class="section-subtitle">Let's Make The Best Investment</p>
+
+            <h1 class="h1 hero-title">Read More And Make Success The Result Of Perfection.</h1>
+
+            <p class="section-text">
+              Read anywhere, anytime – Readify brings the joy of reading to your screen with a vast collection of e-books.
+            </p>
+
+          </div>
+          
+        </div>
+      </section>      
+
+
+
+      <!-- 
+        - #CATEGORIES
+      -->
+
+      <section class="section categories" id="categories" aria-label="categories">
+        <div class="container">
+
+          <div class="grid-list">
+            <li class="benefits-content">
+              <h2 class="section-title">Our's Categories</h2>
+              <p class="section-text">Read anywhere, anytime - Readify brings the joy of reading to your screen with a vast collection of e-books.</p>
+            </li>
+            <li>
+              <div class="benefits-card has-before has-after">
+                
+
+                <div class="card-icon">
+                  <img src="./assets/images/benefits-1.svg" width="40" height="40" loading="lazy" alt="Experience">
+                </div>
+
+                <h3 class="h3 card-title"><a href="/categories/life-experience.html" class="category-item">Life Experience</a></h3>
+               
+                <p class="card-text">
+                  It features books that share personal journeys of growth, challenges, and transformation. These stories offer powerful insights into real-life experiences, helping readers connect with diverse perspectives and gain wisdom from others' paths.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="benefits-card has-before has-after">
+
+                <div class="card-icon">
+                  <img src="./assets/images/benefits-2.svg" width="40" height="40" loading="lazy" alt="Motivation">
+                </div>
+
+                <h3 class="h3 card-title"><a href="/categories/motivation.html" class="category-item">Motivation</a></h3>
+
+                <p class="card-text">
+                  It offers books designed to inspire action and build confidence. These titles provide practical advice, empowering stories, and strategies to help readers achieve their goals and stay motivated on their path to success.
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="benefits-card has-before has-after">
+
+                <div class="card-icon">
+                  <img src="./assets/images/benefits-3.svg" width="40" height="40" loading="lazy" alt="Goals">
+                </div>
+
+                <h3 class="h3 card-title"><a href="/categories/health-wellness.html" class="category-item">Health & Wellness</a></h3>
+
+                <p class="card-text">
+                  The "Health & Wellness" includes books focused on physical, mental, and emotional well-being. These titles provide tips on fitness, nutrition, mindfulness, and self-care to guide readers towards a healthier and more balanced lifestyle.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="benefits-card has-before has-after">
+
+                <div class="card-icon">
+                  <img src="./assets/images/benefits-4.svg" width="40" height="40" loading="lazy" alt="Vision">
+                </div>
+
+                <h3 class="h3 card-title"><a href="/categories/fiction.html" class="category-item">Fiction</a></h3>
+
+                <p class="card-text">
+                  The "Fiction" category offers a broad selection of imaginative stories across genres like fantasy, mystery, and historical fiction or it might be a Sci-Fic books you want to read. These books entertain, inspire, and provoke thought.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="benefits-card has-before has-after">
+
+                <div class="card-icon">
+                  <img src="./assets/images/benefits-5.svg" width="40" height="40" loading="lazy" alt="Mission">
+                </div>
+
+                <h3 class="h3 card-title"><a href="/categories/educational.html" class="category-item">Educational</a></h3>
+
+                <p class="card-text">
+                  The "Education" category presents books on learning, teaching, and intellectual growth. These works offer insights into academic subjects, teaching methods, and personal development to foster a lifelong love of learning. It's now must to have for a common person</p>
+              </div>
+            </li>
+
+            <li>
+              <div class="benefits-card has-before has-after">
+
+                <div class="card-icon">
+                  <img src="./assets/images/benefits-6.svg" width="40" height="40" loading="lazy" alt="Strategy">
+                </div>
+
+                <h3 class="h3 card-title"><a href="/categories/strategy.html" class="category-item">Strategy</a></h3>
+
+                <p class="card-text">
+                  The "Strategy & Business" category features books that explore leadership, business strategies, and organizational success. These titles provide actionable advice to help readers excel in competitive environments and make informed, effective business decisions.
+                </p>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="benefits-card has-before has-after">
+
+                <div class="card-icon">
+                  <img src="./assets/images/benefits-6.svg" width="40" height="40" loading="lazy" alt="Strategy">
+                </div>
+
+                <h3 class="h3 card-title"> <a href="/categories/business-economics.html" class="category-item">Business & Economics</a></h3>
+
+                <p class="card-text">
+                  The "Economy" category examines books that analyze economic trends, financial systems, and global markets. These titles offer valuable insights into economic principles, current financial challenges, and strategies for personal and business financial management.
+                </p>
+
+              </div>
+            </li>
+
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <!-- 
+        - #New Books
+      -->
+
+      <section class="section newbooks" id="newbooks">
+        <div class="container">
+
+          <p class="section-subtitle">New Books</p>
+          <h2 class="h2 section-title has-underline">
+            Recently we've added new books
+          </h2>
+            <div class="book-list">
+              <div class="book-item">
+                <img src="https://via.placeholder.com/200x300?text=Innovative" alt="Innovative">
+                <h3>Innovative</h3>
+                <p>Author Placeholder</p>
+                <button class="read-button" id="readMoreBtn" onclick="readBook('innovative.pdf')">Read Online</button>
+            </div>
+              <div class="book-item">
+                  <img src="https://via.placeholder.com/200x300?text=A+Book+of+Five+Rings" alt="A Book of Five Rings">
+                  <h3>A Book of Five Rings</h3>
+                  <p>Miyamoto Musashi</p>
+                  <button class="read-button" id="readMoreBtn" onclick="readBook('a-book-of-five-rings.pdf')">Read Online</button>
+              </div>
+              <div class="book-item">
+                <img src="https://via.placeholder.com/200x300?text=Execution" alt="Execution">
+                <h3>Execution</h3>
+                <p>Larry Bossidy</p>
+                <button class="read-button" id="readMoreBtn" onclick="readBook('execution.pdf')">Read Online</button>
+            </div>
+              <div class="book-item">
+                  <img src="https://via.placeholder.com/200x300?text=Dixit+and+Nalebuff" alt="Dixit and Nalebuff">
+                  <h3>Dixit and Nalebuff</h3>
+                  <p>Avinash Dixit</p>
+                  <button class="read-button" id="readMoreBtn" onclick="readBook('dixit-and-nalebuff.pdf')">Read Online</button>
+              </div>
+          </div>
+          <span class="span has-before"></span>
+        </div>
+      </section>
+
+
+
+
+
+
+      <!-- 
+        - #AUTHOR
+      -->
+
+      <section class="section author" id="author">
+        <div class="container">
+
+          <figure class="author-banner img-holder" style="--width: 700; --height: 720;">
+            <img src="./assets/images/author-banner.png" width="700" height="720" loading="lazy" alt="Martin Jenny"
+              class="img-cover">
+          </figure>
+
+          <div class="author-content">
+
+            <p class="section-subtitle">The Author</p>
+
+            <h2 class="h2 section-title">Martin Jenny</h2>
+
+            <p class="author-name">Style: Art, Fiction</p>
+
+            <div class="section-text">
+              Jenny Martin is the author of the young adult sci-fi novels Tracked and Marked, known for their action-packed blend of racing, rebellion, and futuristic intrigue. Her debut, Tracked, follows Phee Van Zant, a skilled street racer entangled in political conspiracies and resistance against corporate control. The novel has been praised for its engaging world-building and fast-paced narrative, often compared to The Fast and the Furious meets Firefly for its thrilling mix of high-stakes racing and adventure. Martin’s work is celebrated for its strong, relatable protagonists and has been well received by both YA readers and sci-fi enthusiasts​.
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 
+        - #ABOUt
+      -->
+
+      <section class="section about" id="about" aria-label="about">
+        <div class="container">
+
+          <p class="section-subtitle">About</p>
+
+          <h2 class="section-title has-underline" style="text-align: left;
+          width: 100%;
+          height: 0%;
+          font-size: 20px; ">
+            Welcome to Readify! I’m Kaif Khan, a passionate book lover and tech enthusiast. The idea for Readify came from my love for books and the desire to make reading accessible to everyone, anywhere. I believe in the power of stories to inspire, educate, and connect people, which is why I’ve created this platform to bring together a diverse collection of e-books across various genres and life experiences.
+            <span class="span has-before"></span>
+          </h2>
+
+         </div>
+      </section>      
+
+
+
+
+
+      <!-- 
+        - #CONTACT
+      -->
+
+      <section class="section contact" id="contact" aria-label="contact">
+        <div class="container">
+
+          <p class="section-subtitle">Contact</p>
+
+          <h2 class="h2 section-title has-underline">
+            Write me anything
+            <span class="span has-before"></span>
+          </h2>
+
+          <div class="wrapper">
+
+            <form action="" class="contact-form">
+
+              <input type="text" name="name" placeholder="Your Name" required class="input-field">
+
+              <input type="email" name="email_address" placeholder="Your Email" required class="input-field">
+
+              <input type="text" name="subject" placeholder="Subject" required class="input-field">
+
+              <textarea name="message" placeholder="Your Message" class="input-field"></textarea>
+
+              <button type="submit" class="btn btn-primary">Send Now</button>
+
+            </form>
+
+            <ul class="contact-card">
+
+              <li>
+                <p class="card-title">Address:</p>
+
+                <address class="address">
+                  Ahmedabad <br>
+                Gujarat, India
+                </address>
+              </li>
+
+              <li>
+                <p class="card-title">Phone:</p>
+
+                <a href="tel:1234567890" class="card-link">1995291995</a>
+              </li>
+
+              <li>
+                <p class="card-title">Email:</p>
+
+                <a href="mailto:support@support.com" class="card-link">Readify@gmail.com</a>
+              </li>
+
+              <li>
+                <p class="social-list-title h3">Connect  with  socials</p>
+
+                <ul class="social-list">
+
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-youtube"></ion-icon>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-whatsapp"></ion-icon>
+                    </a>
+                  </li>
+
+                </ul>
+              </li>
+
+            </ul>
+
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+
+
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-top">
+
+        <a href="#" class="logo">Readify</a>
+
+        <ul class="footer-list">
+
+          <li>
+            <a href="#" class="footer-link">Home</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Categories</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">New Books</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Author</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">About</a>
+          </li>
+
+          <li>
+            <a href="#" class="footer-link">Contact</a>
+          </li>
+
+        </ul>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">
+          &copy; 2024 All right reserved. Made with ❤ by Kaif Khan.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

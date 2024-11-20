@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Experience Books</title>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C08081; /* Old Rose Color */
+        }
+
+        .category-header {
+            text-align: center;
+            background-color: #F5DEB3; /* Wheat Color */
+            padding: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #FFE4E1; /* Light Rose Color */
+            border-radius: 5px;
+        }
+
+        .book-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .book-item h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .book-item p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .read-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .read-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="category-header">
+        <h1>Life Experience Books</h1>
+        <p>Explore stories and insights from various life experiences.</p>
+    </div>
+    <div class="book-list">
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Becoming" alt="Becoming">
+            <h3>Becoming</h3>
+            <p>Michelle Obama</p>
+            <button class="read-button" onclick="readBook('becoming-michelle-obama.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Born+a+Crime" alt="Born a Crime">
+            <h3>Born a Crime</h3>
+            <p>Trevor Noah</p>
+            <button class="read-button" onclick="readBook('born-a-crime-trevor-noah.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Eat+Pray+Love" alt="Eat Pray Love">
+            <h3>Eat Pray Love</h3>
+            <p>Elizabeth Gilbert</p>
+            <button class="read-button" onclick="readBook('eat-pray-love-pdf-room.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Educated" alt="Educated">
+            <h3>Educated: A Memoir</h3>
+            <p>Tara Westover</p>
+            <button class="read-button" onclick="readBook('educated-a-memoir-tara-westover-worldfreebooks.com-.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Girl,+Stop+Apologizing" alt="Girl, Stop Apologizing">
+            <h3>Girl, Stop Apologizing</h3>
+            <p>Rachel Hollis</p>
+            <button class="read-button" onclick="readBook('girl-stop-apologizing.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=I+Am+Malala" alt="I Am Malala">
+            <h3>I Am Malala</h3>
+            <p>Malala Yousafzai</p>
+            <button class="read-button" onclick="readBook('i-am-malala-.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Into+the+Wild" alt="Into the Wild">
+            <h3>Into the Wild</h3>
+            <p>Jon Krakauer</p>
+            <button class="read-button" onclick="readBook('into-the-wild-pdf.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Just+Mercy" alt="Just Mercy">
+            <h3>Just Mercy</h3>
+            <p>Bryan Stevenson</p>
+            <button class="read-button" onclick="readBook('justmercy.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Nightingale" alt="The Nightingale">
+            <h3>The Nightingale</h3>
+            <p>Kristin Hannah</p>
+            <button class="read-button" onclick="readBook('kristin-hannah-the-nightingale.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Man's+Search+for+Meaning" alt="Man's Search for Meaning">
+            <h3>Man's Search for Meaning</h3>
+            <p>Viktor E. Frankl</p>
+            <button class="read-button" onclick="readBook('mans-search-for-meaning.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Body+Keeps+the+Score" alt="The Body Keeps the Score">
+            <h3>The Body Keeps the Score</h3>
+            <p>Bessel van der Kolk</p>
+            <button class="read-button" onclick="readBook('oceanofpdf.org-the-body-keeps-the-score-bessel-van-der-kolk-m.d.-pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Alchemist" alt="The Alchemist">
+            <h3>The Alchemist</h3>
+            <p>Paulo Coelho</p>
+            <button class="read-button" onclick="readBook('the-alchemist-paulo-coelho.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Girl+on+the+Train" alt="The Girl on the Train">
+            <h3>The Girl on the Train</h3>
+            <p>Paula Hawkins</p>
+            <button class="read-button" onclick="readBook('the-girl-on-the-train-paula-hawkins.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Glass+Castle" alt="The Glass Castle">
+            <h3>The Glass Castle</h3>
+            <p>Jeannette Walls</p>
+            <button class="read-button" onclick="readBook('the-glass-castle-a-memoir-by-jeannette-walls.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Happiness+Project" alt="The Happiness Project">
+            <h3>The Happiness Project</h3>
+            <p>Gretchen Rubin</p>
+            <button class="read-button" onclick="readBook('the-happiness-project-sample-chapter.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Last+Lecture" alt="The Last Lecture">
+            <h3>The Last Lecture</h3>
+            <p>Randy Pausch</p>
+            <button class="read-button" onclick="readBook('the-last-lecture-by-randy-pausch.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Power+of+Now" alt="The Power of Now">
+            <h3>The Power of Now</h3>
+            <p>Eckhart Tolle</p>
+            <button class="read-button" onclick="readBook('the-power-of-now-eckhart-tolle-pdf-room.pdf')">Read Online</button>
+        </div>
+        
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=When+Breath+Becomes+Air" alt="When Breath Becomes Air">
+            <h3>When Breath Becomes Air</h3>
+            <p>Paul Kalanithi</p>
+            <button class="read-button" onclick="readBook('when-breath-becomes-air-by-paul-kalanithi.pdf')">Read Online</button>
+        </div>
+    </div>
+
+    <script>
+
+        const client = new Appwrite.Client();
+            client
+                .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite endpoint
+                .setProject('67309edd0038034a0603'); // Your project ID
+        
+        const account = new Appwrite.Account(client);
+        
+        async function readBook(BookName) {
+            let user;
+            try {
+            user = await account.get();
+            // Logged in
+            if (user) {
+                window.open(`../Books PDF/Life Experience/${BookName}`, "_blank"); // Opens the PDF in a new tab
+            }
+            else {
+                alert("You have not access to read this book please login first");
+                window.location.href = "../Log/index.html";
+            }
+            } catch (err) {
+            // Not logged in
+                console.log(err);
+            }
+            if (!user) {
+                alert("You don't have access to read this book please login first");
+            }
+        }
+    
+            </script>
+</body>
+</html>

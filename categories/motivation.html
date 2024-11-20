@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motivation Books</title>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C08081; /* Old Rose Color */
+        }
+
+        .category-header {
+            text-align: center;
+            background-color: #F5DEB3; /* Wheat Color */
+            padding: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #FFE4E1; /* Light Rose Color */
+            border-radius: 5px;
+        }
+
+        .book-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .book-item h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .book-item p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .read-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .read-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="category-header">
+        <h1>Motivation Books</h1>
+        <p>Discover inspiring stories and insights to ignite your passion and drive.</p>
+    </div>
+    <div class="book-list">
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Atomic+Habits" alt="Atomic Habits">
+            <h3>Atomic Habits</h3>
+            <p>James Clear</p>
+            <button class="read-button" onclick="readBook('atomic-habits-pdfdrive-.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Subtle+Art+of+Not+Giving+a+F*ck" alt="The Subtle Art of Not Giving a F*ck">
+            <h3>The Subtle Art of Not Giving a F*ck</h3>
+            <p>Mark Manson</p>
+            <button class="read-button" onclick="readBook('the-subtle-art-of-not-giving-a-fck-a-counterintuitive-approach-to-living-a-good-life-by-mark-manson-z-lib.org-.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=You+Are+a+Badass" alt="You Are a Badass">
+            <h3>You Are a Badass</h3>
+            <p>Jen Sincero</p>
+            <button class="read-button" onclick="readBook('you-are-a-badass.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Think+and+Grow+Rich" alt="Think and Grow Rich">
+            <h3>Think and Grow Rich</h3>
+            <p>Napoleon Hill</p>
+            <button class="read-button" onclick="readBook('think-and-grow-rich.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Mindset" alt="Mindset">
+            <h3>Mindset</h3>
+            <p>Carol S. Dweck</p>
+            <button class="read-button" onclick="readBook('mindset.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Miracle+Morning" alt="The Miracle Morning">
+            <h3>The Miracle Morning</h3>
+            <p>Hal Elrod</p>
+            <button class="read-button" onclick="readBook('the-miracle-morning.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Can't+Hurt+Me" alt="Can't Hurt Me">
+            <h3>Can't Hurt Me</h3>
+            <p>David Goggins</p>
+            <button class="read-button" onclick="readBook('cant-hurt-me.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Awaken+the+Giant+Within" alt="Awaken the Giant Within">
+            <h3>Awaken the Giant Within</h3>
+            <p>Tony Robbins</p>
+            <button class="read-button" onclick="readBook('awaken-the-giant-within.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Four+Agreements" alt="The Four Agreements">
+            <h3>The Four Agreements</h3>
+            <p>Don Miguel Ruiz</p>
+            <button class="read-button" onclick="readBook('the-four-agreements.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=How+to+Win+Friends+and+Influence+People" alt="How to Win Friends and Influence People">
+            <h3>How to Win Friends and Influence People</h3>
+            <p>Dale Carnegie</p>
+            <button class="read-button" onclick="readBook('win-friends-influence.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Feel+the+Fear+and+Do+It+Anyway" alt="Feel the Fear and Do It Anyway">
+            <h3>Feel the Fear and Do It Anyway</h3>
+            <p>Susan Jeffers</p>
+            <button class="read-button" onclick="readBook('feel-the-fear.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+5+Second+Rule" alt="The 5 Second Rule">
+            <h3>The 5 Second Rule</h3>
+            <p>Mel Robbins</p>
+            <button class="read-button" onclick="readBook('the-5-second-rule.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=What+to+Say+When+You+Talk+to+Yourself" alt="What to Say When You Talk to Yourself">
+            <h3>What to Say When You Talk to Yourself</h3>
+            <p>Shad Helmstetter</p>
+            <button class="read-button" onclick="readBook('what-to-say-when.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Magic+of+Thinking+Big" alt="The Magic of Thinking Big">
+            <h3>The Magic of Thinking Big</h3>
+            <p>David J. Schwartz</p>
+            <button class="read-button" onclick="readBook('the-magic-of-thinking-big.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Compound+Effect" alt="The Compound Effect">
+            <h3>The Compound Effect</h3>
+            <p>Darren Hardy</p>
+            <button class="read-button" onclick="readBook('the-compound-effect.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Drive" alt="Drive">
+            <h3>Drive</h3>
+            <p>Daniel H. Pink</p>
+            <button class="read-button" onclick="readBook('drive.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Alchemist" alt="The Alchemist">
+            <h3>The Alchemist</h3>
+            <p>Paulo Coelho</p>
+            <button class="read-button" onclick="readBook('the-alchemist.pdf')">Read Online</button>
+        </div>
+    </div>
+
+    <script>
+
+        const client = new Appwrite.Client();
+            client
+                .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite endpoint
+                .setProject('67309edd0038034a0603'); // Your project ID
+        
+        const account = new Appwrite.Account(client);
+        
+        async function readBook(BookName) {
+            let user;
+            try {
+            user = await account.get();
+            // Logged in
+            if (user) {
+                window.open(`../Books PDF/Motivation/${BookName}`, "_blank"); // Opens the PDF in a new tab
+            }
+            else {
+                alert("You have not access to read this book please login first");
+                window.location.href = "../Log/index.html";
+            }
+            } catch (err) {
+            // Not logged in
+                console.log(err);
+            }
+            if (!user) {
+                alert("You don't have access to read this book please login first");
+            }
+        }
+    
+            </script>
+</body>
+</html>

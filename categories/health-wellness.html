@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health & Wellness Books</title>
+    <script src="https://cdn.jsdelivr.net/npm/appwrite@14.0.1"></script>
+    
+   <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #C08081; /* Old Rose Color */
+        }
+
+        .category-header {
+            text-align: center;
+            background-color: #F5DEB3; /* Wheat Color */
+            padding: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #FFE4E1; /* Light Rose Color */
+            border-radius: 5px;
+        }
+
+        .book-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .book-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .book-item h3 {
+            margin: 10px 0 5px;
+            font-size: 1.2em;
+        }
+
+        .book-item p {
+            color: #555;
+            margin: 5px 0;
+        }
+
+        .read-button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .read-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="category-header">
+        <h1>Health & Wellness Books</h1>
+        <p>Explore books that promote a healthy lifestyle and well-being.</p>
+    </div>
+    <div class="book-list">
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Body+Keeps+the+Score" alt="The Body Keeps the Score">
+            <h3>The Body Keeps the Score</h3>
+            <p>Bessel van der Kolk</p>
+            <button class="read-button" onclick="readBook('the-body-keeps-the-score.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=How+Not+to+Die" alt="How Not to Die">
+            <h3>How Not to Die</h3>
+            <p>Michael Greger</p>
+            <button class="read-button" onclick="readBook('how-not-to-die.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Wellness+Revolution" alt="The Wellness Revolution">
+            <h3>The Wellness Revolution</h3>
+            <p>Paul Zane Pilzer</p>
+            <button class="read-button" onclick="readBook('the-wellness-revolution.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Food+Rules" alt="Food Rules">
+            <h3>Food Rules</h3>
+            <p>Michael Pollan</p>
+            <button class="read-button" onclick="readBook('food-rules.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Blue+Zones" alt="The Blue Zones">
+            <h3>The Blue Zones</h3>
+            <p>Dan Buettner</p>
+            <button class="read-button" onclick="readBook('the-blue-zones.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Miracle+Morning" alt="The Miracle Morning">
+            <h3>The Miracle Morning</h3>
+            <p>Hal Elrod</p>
+            <button class="read-button" onclick="readBook('the-miracle-morning.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Why+We+Sleep" alt="Why We Sleep">
+            <h3>Why We Sleep</h3>
+            <p>Matthew Walker</p>
+            <button class="read-button" onclick="readBook('why-we-sleep.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+7+Habits+of+Highly+Effective+People" alt="The 7 Habits of Highly Effective People">
+            <h3>The 7 Habits of Highly Effective People</h3>
+            <p>Stephen R. Covey</p>
+            <button class="read-button" onclick="readBook('7-habits-of-highly-effective-people.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=The+Sleep+Revolution" alt="The Sleep Revolution">
+            <h3>The Sleep Revolution</h3>
+            <p>Arianna Huffington</p>
+            <button class="read-button" onclick="readBook('the-sleep-revolution.pdf')">Read Online</button>
+        </div>
+        <div class="book-item">
+            <img src="https://via.placeholder.com/200x300?text=Atomic+Habits" alt="Atomic Habits">
+            <h3>Atomic Habits</h3>
+            <p>James Clear</p>
+            <button class="read-button" onclick="readBook('atomic-habits.pdf')">Read Online</button>
+        </div>
+    </div>
+
+    <script>
+
+        const client = new Appwrite.Client();
+            client
+                .setEndpoint('https://cloud.appwrite.io/v1') // Your Appwrite endpoint
+                .setProject('67309edd0038034a0603'); // Your project ID
+        
+        const account = new Appwrite.Account(client);
+        
+        async function readBook(BookName) {
+            let user;
+            try {
+            user = await account.get();
+            // Logged in
+            if (user) {
+                window.open(`../Books PDF/Health & Wellness/${BookName}`, "_blank"); // Opens the PDF in a new tab
+            }
+            else {
+                alert("You have not access to read this book please login first");
+                window.location.href = "../Log/index.html";
+            }
+            } catch (err) {
+            // Not logged in
+                console.log(err);
+            }
+            if (!user) {
+                alert("You don't have access to read this book please login first");
+            }
+        }
+    
+            </script>
+    
+</body>
+</html>
